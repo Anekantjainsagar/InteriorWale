@@ -6,6 +6,8 @@ import ServicesSection from "./components/sections/ServicesSection";
 import WhyChooseSection from "./components/sections/WhyChooseSection";
 import ContactSection from "./components/sections/ContactSection";
 import OurExpertiseSection from "./components/sections/OurExpertiseSection";
+import FeaturedProjectsSection from "./components/sections/FeaturedProjects";
+import TestimonialsSection from "./components/sections/TestimonialsSection";
 
 const HomePage = () => {
   return (
@@ -15,6 +17,8 @@ const HomePage = () => {
       <ServicesSection />
       <WhyChooseSection />
       <OurExpertiseSection />
+      <FeaturedProjectsSection />
+      <TestimonialsSection />
       <ContactSection />
     </main>
   );
