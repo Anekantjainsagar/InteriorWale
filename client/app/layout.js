@@ -20,11 +20,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <Header />
-        {children} <Footer />
-        <script
-          type="module"
-          src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fanekants3701back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.5"
-        ></script>
+        {children}
+        <Footer />
       </body>
     </html>
   );
