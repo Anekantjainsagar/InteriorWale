@@ -39,7 +39,7 @@ const AboutSection = () => {
               </div>
 
               <button className="bg-newOrange hover:bg-newOrange mt-5 text-black font-semibold text-lg px-10 py-4 rounded-full shadow-md">
-                Let's talk design
+                Let&apos;s talk design
               </button>
             </div>
           </div>

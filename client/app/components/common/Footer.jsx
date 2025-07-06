@@ -2,6 +2,7 @@
 import React from "react";
 import Button from "../ui/Button";
 import { RxArrowTopRight } from "react-icons/rx";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -53,7 +54,9 @@ const FooterCopyright = () => {
 const FooterLeft = () => {
   return (
     <div className="w-full lg:w-1/3">
-      <img
+      <Image
+        width={1000}
+        height={1000}
         src="/images/img_footer_logo.png"
         alt="The Interior Wale Footer Logo"
         className="w-[240px] sm:w-[280px] lg:w-[324px] h-auto"
@@ -68,7 +71,9 @@ const FooterLeft = () => {
           "img_vector_38x36.svg",
           "img_vector_1.svg",
         ].map((icon, idx) => (
-          <img
+          <Image
+            width={10000}
+            height={10000}
             key={idx}
             src={`/images/${icon}`}
             alt="Social Media"
