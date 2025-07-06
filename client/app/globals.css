@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FontFace Definitions */
+@font-face {
+  font-family: "Muller";
+  src: url("/fonts/MullerExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("/fonts/MullerMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller";
+  src: url("/fonts/MullerMediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowExtraBoldItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowMedium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowMediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowLight.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Muller Narrow";
+  src: url("/fonts/MullerNarrowLightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Apply to base styles */
+@layer base {
+  body {
+    font-family: "Muller", "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+@layer base {
+  :root {
+    /* Global Colors */
+    --global-bg-1: #0000007f;
+    --global-bg-2: #efefef;
+    --global-bg-3: #ffad65;
+    --global-bg-4: #ffffff;
+    --global-text-1: #000000;
+    --global-text-2: #ffad65;
+    --global-text-3: #ffffff;
+
+    /* Button Colors */
+    --button-bg-1: #232323;
+
+    /* Footer Colors */
+    --footer-bg-1: #000000;
+  }
+
+  body {
+    font-family: "Muller", "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+}
+
+@layer utilities {
+  /* Global */
+  .bg-global-1 {
+    background-color: var(--global-bg-1);
+  }
+  .bg-global-2 {
+    background-color: var(--global-bg-2);
+  }
+  .bg-global-3 {
+    background-color: var(--global-bg-3);
+  }
+  .bg-global-4 {
+    background-color: var(--global-bg-4);
+  }
+  .text-global-1 {
+    color: var(--global-text-1);
+  }
+  .text-global-2 {
+    color: var(--global-text-2);
+  }
+  .text-global-3 {
+    color: var(--global-text-3);
+  }
+
+  /* Button */
+  .bg-button-1 {
+    background-color: var(--button-bg-1);
+  }
+
+  /* Footer */
+  .bg-footer-1 {
+    background-color: var(--footer-bg-1);
+  }
+}
