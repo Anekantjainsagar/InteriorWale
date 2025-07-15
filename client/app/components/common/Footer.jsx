@@ -40,13 +40,13 @@ const FooterSection = ({ title, links }) => {
 const FooterCopyright = () => {
   return (
     <div className="w-full bg-newOrange px-4 sm:px-6 lg:px-8 py-0.5">
-      <Button
+      <div
         variant="ghost"
         className="w-full text-xs sm:text-sm lg:text-base font-medium font-muller text-global-1 bg-transparent hover:bg-transparent py-2"
       >
         Copyright © 2025, theinteriorwale.com, All Rights Reserved, Designed &
         Developed by Anekant & Sarthak
-      </Button>
+      </div>
     </div>
   );
 };
