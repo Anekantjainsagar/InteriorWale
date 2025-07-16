@@ -1,15 +1,16 @@
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React from "react";
 
 const links = [
   { title: "HOME", link: "/" },
-  { title: "ABOUT", link: "/" },
-  { title: "PORTFOLIO", link: "/" },
+  { title: "ABOUT", link: "/about" },
+  { title: "PORTFOLIO", link: "/portfolio" },
   { title: "BLOG", link: "/blogs" },
 ];
 
 const NavMenu = ({ menuOpen }) => {
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <nav
@@ -23,6 +24,9 @@ const NavMenu = ({ menuOpen }) => {
             className={`text-base sm:text-base lg:text-lg font-medium font-muller ${
               pathname === link?.link ? "text-global-2" : "text-global-1"
             } hover:text-global-2 transition-colors duration-200 py-2 lg:py-0`}
+            onClick={() => {
+              router.push(link?.link);
+            }}
           >
             {link?.title}
           </button>

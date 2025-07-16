@@ -21,7 +21,7 @@ const portfolioItems = [
 
 const PortfolioSection = () => {
   return (
-    <section className="bg-white px-[5vw] grid gap-12 gap-y-[10vh]">
+    <section className="bg-white px-[5vw] grid gap-y-[8vh] mb-[8vh]">
       {portfolioItems.map((item) => (
         <div
           key={item.id}
