@@ -27,7 +27,7 @@ const BlogCards = () => {
 
   return (
     <div className="mt-[10vh] px-2 sm:px-3 lg:px-14 py-7 sm:py-8 lg:py-7">
-      <div>
+      <div className="px-[5vw]">
         <div className="flex items-start">
           <h1 className="text-8xl w-8/12 font-semibold">{blogs[0].title}</h1>
           <div className="w-4/12">
@@ -45,29 +45,31 @@ const BlogCards = () => {
           className="my-10"
         />
       </div>
-      {blogs?.slice(1).map((blog, index) => (
-        <div
-          key={index}
-          className="mb-8 bg-[#EBEBEB] p-9 rounded-[50px] flex items-center"
-        >
-          <Image
-            src={blog?.img}
-            alt={blog?.title + " Image"}
-            width={10000}
-            height={10000}
-            className="w-[23%] aspect-squre"
-          />
-          <div className="pl-9">
-            <h2 className="text-3xl font-bold mb-2">{blog.title}</h2>
-            <p className="text-xl mt-2">{blog.description}</p>
-            <div className="mt-4 flex justify-end">
-              <button className="bg-newOrange text-black py-3 px-10 text-lg rounded-full">
-                Read full blog
-              </button>
+      <div className="px-[5vw]">
+        {blogs?.slice(1).map((blog, index) => (
+          <div
+            key={index}
+            className="mb-8 bg-[#EBEBEB] p-9 rounded-[50px] flex items-center"
+          >
+            <Image
+              src={blog?.img}
+              alt={blog?.title + " Image"}
+              width={10000}
+              height={10000}
+              className="w-[23%] aspect-squre"
+            />
+            <div className="pl-9">
+              <h2 className="text-3xl font-bold mb-2">{blog.title}</h2>
+              <p className="text-xl mt-2">{blog.description}</p>
+              <div className="mt-4 flex justify-end">
+                <button className="bg-newOrange text-black py-3 px-10 text-lg rounded-full">
+                  Read full blog
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
