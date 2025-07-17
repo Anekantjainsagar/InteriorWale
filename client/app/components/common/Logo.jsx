@@ -5,10 +5,11 @@ const Logo = () => (
   <div className="flex-shrink-0">
     <Image
       src="/images/img_header_logo.png"
-      width={10000}
-      height={10000}
+      width={216}
+      height={60}
       alt="The Interior Wale Logo"
-      className="w-[160px] sm:w-[180px] lg:w-[216px] h-auto"
+      className="w-[160px] lg:w-[216px] h-auto"
+      priority
     />
   </div>
 );

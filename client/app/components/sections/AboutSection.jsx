@@ -1,47 +1,52 @@
-// components/sections/AboutSection.jsx
 import React from "react";
-import Button from "../ui/Button";
 import Image from "next/image";
 
 const AboutSection = () => {
   return (
-    <section className="w-full h-full relative">
-      <Image
-        src={"/images/img_untitled_1.png"}
-        alt="About SEction"
-        className="w-full h-full object-cover"
-        width={10000}
-        height={10000}
-      />
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 z-10 flex items-center justify-end px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="w-[90%]">
-          <div className="max-w-3xl ml-auto">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-              Who We Are
-            </h2>
+    <section className="w-full relative h-screen">
+      {/* Background Image - Full height */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/img_untitled_1.png"
+          alt="Luxury interior design"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+      </div>
 
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-xl lg:text-2xl text-white mb-4">
-                  Meet The Interior Wale - Crafting Interiors
-                  <br />
-                  with Purpose & Passion
-                </h3>
-                <p className="text-lg lg:text-xl text-gray-800 font-light w-10/12 leading-relaxed">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                  <br />
-                  <br />
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                  accusantium doloremque laudantium, totam rem aperiam, eaque
-                  ipsa
-                </p>
-              </div>
+      {/* Content Container - Right Aligned */}
+      <div className="absolute right-0 top-0 h-full w-full lg:w-1/2 xl:w-2/5 flex items-center">
+        <div className="bg-white/30 bg-opacity-90 lg:bg-opacity-80 backdrop-blur-sm h-full lg:h-auto w-full p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-100 mb-6">
+            Who We Are
+          </h2>
 
-              <button className="bg-newOrange hover:bg-newOrange mt-5 text-black font-semibold text-lg px-10 py-4 rounded-full shadow-md">
-                Let&apos;s talk design
-              </button>
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl lg:text-2xl xl:text-3xl text-gray-100 mb-4 leading-tight">
+                Meet The Interior Wale -<br />
+                Crafting Interiors with Purpose & Passion
+              </h3>
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              </p>
+              <p className="text-base sm:text-lg text-gray-300 leading-relaxed mt-4">
+                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+                accusantium doloremque laudantium, totam rem aperiam, eaque
+                ipsa.
+              </p>
             </div>
+
+            <button
+              className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-gray-200 font-semibold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full shadow-md hover:shadow-lg mt-6 w-full sm:w-auto"
+              aria-label="Let's talk about your design"
+            >
+              Let&apos;s talk design
+            </button>
           </div>
         </div>
       </div>

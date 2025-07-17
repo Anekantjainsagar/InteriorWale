@@ -2,23 +2,28 @@ import React from "react";
 
 const HamburgerMenu = ({ menuOpen, setMenuOpen }) => (
   <button
-    className="block lg:hidden p-3"
+    className="lg:hidden p-2 focus:outline-none focus:ring-2 focus:ring-global-2 rounded-md transition-all"
     aria-label="Toggle menu"
+    aria-expanded={menuOpen}
     onClick={() => setMenuOpen(!menuOpen)}
   >
-    <svg
-      className="w-6 h-6"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M4 6h16M4 12h16M4 18h16"
-      />
-    </svg>
+    <div className="w-6 h-6 relative">
+      <span
+        className={`block absolute left-0 w-full h-0.5 bg-global-1 transition-all duration-300 ${
+          menuOpen ? "rotate-45 top-1/2 -translate-y-1/2" : "top-1"
+        }`}
+      ></span>
+      <span
+        className={`block absolute left-0 w-full h-0.5 bg-global-1 transition-all duration-300 ${
+          menuOpen ? "opacity-0" : "top-1/2 -translate-y-1/2"
+        }`}
+      ></span>
+      <span
+        className={`block absolute left-0 w-full h-0.5 bg-global-1 transition-all duration-300 ${
+          menuOpen ? "-rotate-45 top-1/2 -translate-y-1/2" : "bottom-1"
+        }`}
+      ></span>
+    </div>
   </button>
 );
 
