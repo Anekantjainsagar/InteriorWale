@@ -26,43 +26,58 @@ const BlogCards = () => {
   ];
 
   return (
-    <div className="mt-[10vh] px-2 sm:px-3 lg:px-14 py-7 sm:py-8 lg:py-7">
-      <div className="px-[5vw]">
-        <div className="flex items-start">
-          <h1 className="text-8xl w-8/12 font-semibold">{blogs[0].title}</h1>
-          <div className="w-4/12">
-            <p className="text-3xl font-light mb-4">{blogs[0].description}</p>
-            <button className="bg-newOrange text-black py-2 font-medium px-12 text-lg rounded-full">
+    <div className="mt-[8vh] md:mt-[10vh] px-4 sm:px-6 lg:px-14 py-6 sm:py-8 lg:py-7">
+      {/* Featured Blog (First Blog) */}
+      <div className="px-0 md:px-[5vw] mb-10 md:mb-16">
+        <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-10">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold lg:w-8/12">
+            {blogs[0].title}
+          </h1>
+          <div className="lg:w-4/12">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4">
+              {blogs[0].description}
+            </p>
+            <button className="bg-newOrange text-black py-2 px-6 sm:px-8 md:px-10 lg:px-12 font-medium text-base sm:text-lg rounded-full hover:bg-opacity-90 transition-colors">
               Read full blog
             </button>
           </div>
         </div>
-        <Image
-          src={blogs[0].img}
-          alt={blogs[0].title + " Image"}
-          width={10000}
-          height={10000}
-          className="my-10"
-        />
+        <div className="mt-6 md:mt-10">
+          <Image
+            src={blogs[0].img}
+            alt={blogs[0].title + " Image"}
+            width={1000}
+            height={600}
+            className="w-full h-auto rounded-2xl md:rounded-3xl"
+          />
+        </div>
       </div>
-      <div className="px-[5vw]">
+
+      {/* Additional Blogs */}
+      <div className="px-0 md:px-[5vw]">
         {blogs?.slice(1).map((blog, index) => (
           <div
             key={index}
-            className="mb-8 bg-[#EBEBEB] p-9 rounded-[50px] flex items-center"
+            className="mb-6 md:mb-8 bg-[#EBEBEB] p-5 sm:p-6 md:p-7 lg:p-9 rounded-3xl md:rounded-[50px] flex flex-col sm:flex-row items-center gap-5 md:gap-7"
           >
-            <Image
-              src={blog?.img}
-              alt={blog?.title + " Image"}
-              width={10000}
-              height={10000}
-              className="w-[23%] aspect-squre"
-            />
-            <div className="pl-9">
-              <h2 className="text-3xl font-bold mb-2">{blog.title}</h2>
-              <p className="text-xl mt-2">{blog.description}</p>
-              <div className="mt-4 flex justify-end">
-                <button className="bg-newOrange text-black py-3 px-10 text-lg rounded-full">
+            <div className="w-full sm:w-[40%] md:w-[30%] lg:w-[23%]">
+              <Image
+                src={blog?.img}
+                alt={blog?.title + " Image"}
+                width={400}
+                height={300}
+                className="w-full h-auto aspect-video sm:aspect-square object-cover rounded-2xl"
+              />
+            </div>
+            <div className="w-full sm:w-[60%] md:w-[70%] lg:w-[77%] sm:pl-0 md:pl-5 lg:pl-9">
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 md:mb-3">
+                {blog.title}
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-2 line-clamp-3 md:line-clamp-4">
+                {blog.description}
+              </p>
+              <div className="mt-4 md:mt-6 flex justify-end">
+                <button className="bg-newOrange text-black py-2 px-6 sm:py-2.5 sm:px-8 md:py-3 md:px-10 text-sm sm:text-base md:text-lg rounded-full hover:bg-opacity-90 transition-colors">
                   Read full blog
                 </button>
               </div>

@@ -6,7 +6,7 @@ import Numbers from "../components/sections/portfolio/Numbers";
 
 const PortfolioPage = () => {
   return (
-    <div className="px-2 sm:px-3 lg:px-14 py-7 sm:py-8 lg:py-7 mt-[10vh]">
+    <div className="px-4 sm:px-6 lg:px-14 py-6 sm:py-8 lg:py-7 mt-[8vh] md:mt-[10vh]">
       <Header />
       <HeroSection />
       <Numbers />
