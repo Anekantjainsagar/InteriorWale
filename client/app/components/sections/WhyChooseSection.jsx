@@ -57,7 +57,7 @@ const WhyChooseSection = () => {
           <p className="text-xl lg:text-2xl text-gray-900 mt-2">
             Crafted spaces, tailored to you
           </p>
-          <p className="text-base lg:text-lg text-gray-800 mt-2 font-light mx-auto w-6/12">
+          <p className="text-base lg:text-lg text-gray-800 mt-2 font-light mx-auto w-11/12 md:w-6/12">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor
           </p>
@@ -77,7 +77,7 @@ const WhyChooseSection = () => {
           </div>
 
           {/* Features */}
-          <div className="w-[50%] space-y-8 mx-[4vh]">
+          <div className="w-full md:w-[50%] space-y-8 mx-[4vh]">
             <FeatureList />
             <button className="bg-newOrange hover:bg-newOrange mt-5 text-black font-semibold px-10 py-2.5 rounded-full shadow-md">
               Start your project

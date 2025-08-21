@@ -20,7 +20,7 @@ const featuredProjects = [
 const FeaturedProjectsSection = () => {
   return (
     <section className="w-full bg-white py-16 lg:py-24">
-      <div className="w-[70%] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-[90%] md:w-[70%] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2">
@@ -29,7 +29,7 @@ const FeaturedProjectsSection = () => {
           <p className="text-xl lg:text-2xl text-gray-800">
             Crafted spaces, tailored to you
           </p>
-          <p className="text-base lg:text-lg font-light text-gray-500 mt-2 w-6/12 mx-auto">
+          <p className="text-base lg:text-lg font-light text-gray-500 mt-2 w-11/12 md:w-6/12 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor
           </p>
