@@ -26,10 +26,10 @@ const HeroSection = () => {
           {/* Testimonial */}
           <div className="mt-6 sm:mt-8 lg:mt-10">
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-700 max-w-full lg:max-w-2xl leading-relaxed">
-              "Thank you for all of the beautiful ideas! I just love my new
+              &quot;Thank you for all of the beautiful ideas! I just love my new
               living room design. I love that this is a perfect blend of
               contemporary without being too cold. Thank you so much for
-              achieving this for us."
+              achieving this for us.&quot;
             </p>
           </div>
 
