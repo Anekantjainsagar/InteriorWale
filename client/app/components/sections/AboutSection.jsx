@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 
@@ -6,14 +7,25 @@ const AboutSection = () => {
     <section className="w-full relative h-screen">
       {/* Background Image - Full height */}
       <div className="absolute inset-0">
-        <Image
-          src="/images/img_untitled_1.png"
-          alt="Luxury interior design"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="object-cover w-full h-full"
+          poster="/images/img_untitled_1.png" // Fallback image if video doesn't load
+        >
+          <source src="/images/img_untitled_1.mp4" type="video/mp4" />
+          {/* Fallback image if video is not supported */}
+          <Image
+            src="/images/img_untitled_1.png"
+            alt="Luxury interior design"
+            fill
+            className="object-cover"
+            priority
+            quality={90}
+          />
+        </video>
         <div className="absolute inset-0 bg-black bg-opacity-30"></div>
       </div>
 
@@ -44,6 +56,16 @@ const AboutSection = () => {
             <button
               className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-gray-200 font-semibold text-base sm:text-lg px-8 sm:px-10 py-3 sm:py-4 rounded-full shadow-md hover:shadow-lg mt-6 w-full sm:w-auto"
               aria-label="Let's talk about your design"
+              onClick={() => {
+                const formSection = document.getElementById("contact");
+                if (formSection) {
+                  const offsetTop = formSection.offsetTop - 80; // Adjust for header height if needed
+                  window.scrollTo({
+                    top: offsetTop,
+                    behavior: "smooth",
+                  });
+                }
+              }}
             >
               Let&apos;s talk design
             </button>

@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const BlogCards = () => {
+  const history = useRouter();
   const blogs = [
     {
       img: "/images/blogs/home.png",
@@ -25,6 +28,10 @@ const BlogCards = () => {
     },
   ];
 
+  const navigateToBlog = (blog) => {
+    history.push(`/blogs/${blog?.title?.toLowerCase()?.replaceAll(" ", "-")}`);
+  };
+
   return (
     <div className="mt-[8vh] md:mt-[10vh] px-4 sm:px-6 lg:px-14 py-6 sm:py-8 lg:py-7">
       {/* Featured Blog (First Blog) */}
@@ -37,7 +44,12 @@ const BlogCards = () => {
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4">
               {blogs[0].description}
             </p>
-            <button className="bg-newOrange text-black py-2 px-6 sm:px-8 md:px-10 lg:px-12 font-medium text-base sm:text-lg rounded-full hover:bg-opacity-90 transition-colors">
+            <button
+              onClick={() => {
+                navigateToBlog(blogs[0]);
+              }}
+              className="bg-newOrange text-black py-2 px-6 sm:px-8 md:px-10 lg:px-12 font-medium text-base sm:text-lg rounded-full hover:bg-opacity-90 transition-colors"
+            >
               Read full blog
             </button>
           </div>
@@ -77,7 +89,12 @@ const BlogCards = () => {
                 {blog.description}
               </p>
               <div className="mt-4 md:mt-6 flex justify-end">
-                <button className="bg-newOrange text-black py-2 px-6 sm:py-2.5 sm:px-8 md:py-3 md:px-10 text-sm sm:text-base md:text-lg rounded-full hover:bg-opacity-90 transition-colors">
+                <button
+                  onClick={() => {
+                    navigateToBlog(blog);
+                  }}
+                  className="bg-newOrange text-black py-2 px-6 sm:py-2.5 sm:px-8 md:py-3 md:px-10 text-sm sm:text-base md:text-lg rounded-full hover:bg-opacity-90 transition-colors"
+                >
                   Read full blog
                 </button>
               </div>

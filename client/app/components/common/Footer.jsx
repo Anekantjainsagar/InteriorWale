@@ -2,14 +2,39 @@
 import React from "react";
 import { RxArrowTopRight } from "react-icons/rx";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
+  // Function to handle navigation and scrolling
+  const navigateToSection = (sectionId) => {
+    // Check if we're on the homepage
+    if (window.location.pathname === "/") {
+      // On homepage, just scroll to section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offsetTop = element.offsetTop - 80;
+        window.scrollTo({
+          top: offsetTop,
+          behavior: "smooth",
+        });
+      }
+    } else {
+      // Not on homepage, navigate to homepage with hash
+      router.push(`/#${sectionId}`);
+
+      // Set a flag in sessionStorage to trigger scroll after navigation
+      sessionStorage.setItem("shouldScrollTo", sectionId);
+    }
+  };
+
   return (
     <footer className="w-full bg-newGrey">
       <div className="max-w-[2000px] mx-auto px-4 sm:px-6 lg:px-24 py-8 lg:py-12">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-8 lg:gap-16 xl:gap-28">
           <FooterLeft />
-          <FooterRight />
+          <FooterRight navigateToSection={navigateToSection} />
         </div>
       </div>
       <FooterCopyright />
@@ -17,20 +42,43 @@ const Footer = () => {
   );
 };
 
-const FooterSection = ({ title, links }) => {
+const FooterSection = ({ title, links, navigateToSection }) => {
   return (
     <div className="w-full sm:w-auto">
       <h3 className="text-lg sm:text-xl lg:text-2xl font-medium font-muller text-global-1 mb-3 lg:mb-4">
         {title}
       </h3>
       <ul className="space-y-2 lg:space-y-3">
-        {links.map((link, idx) => (
-          <li key={idx}>
-            <button className="text-base sm:text-lg lg:text-xl font-normal font-muller text-global-1 hover:text-newOrange transition-colors duration-200 text-left w-full text-start">
-              {link}
-            </button>
-          </li>
-        ))}
+        {links.map((link, idx) => {
+          // Map link text to section IDs
+          const sectionMap = {
+            Home: "hero",
+            "Who we are": "about",
+            "What we do": "services",
+            "Why choose Us?": "why-choose-us",
+            "Our Expertise": "expertise",
+            "Featured Projects": "projects",
+            Testimonials: "testimonials",
+            "Contact Us": "contact",
+            "Privacy Policy": "privacy-policy",
+            "Terms of Service": "terms",
+          };
+
+          const sectionId = sectionMap[link];
+
+          return (
+            <li key={idx}>
+              <button
+                onClick={() =>
+                  sectionId ? navigateToSection(sectionId) : null
+                }
+                className="text-base sm:text-lg lg:text-xl font-normal font-muller text-global-1 hover:text-newOrange transition-colors duration-200 text-left w-full text-start"
+              >
+                {link}
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
@@ -48,16 +96,28 @@ const FooterCopyright = () => {
 };
 
 const FooterLeft = () => {
+  const router = useRouter();
+
+  const handleLogoClick = () => {
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
+
   return (
     <div className="w-full lg:w-[40%] xl:w-1/3">
-      <Image
-        width={324}
-        height={100}
-        src="/images/img_footer_logo.png"
-        alt="The Interior Wale Footer Logo"
-        className="w-[200px] sm:w-[240px] lg:w-[280px] xl:w-[324px] h-auto"
-        priority
-      />
+      <button onClick={handleLogoClick} className="cursor-pointer">
+        <Image
+          width={324}
+          height={100}
+          src="/images/img_footer_logo.png"
+          alt="The Interior Wale Footer Logo"
+          className="w-[200px] sm:w-[240px] lg:w-[280px] xl:w-[324px] h-auto"
+          priority
+        />
+      </button>
       <p className="text-base sm:text-lg lg:text-xl font-light font-muller text-global-1 leading-relaxed mt-4 lg:mt-6">
         The interior wale has crafted the most amazing & aesthetic space at
         home. I would recommend them for any type of interior designing.
@@ -82,7 +142,7 @@ const FooterLeft = () => {
   );
 };
 
-const FooterRight = () => {
+const FooterRight = ({ navigateToSection }) => {
   return (
     <div className="w-full lg:w-[60%] xl:w-2/3 flex flex-col sm:flex-row justify-between items-start gap-8 lg:gap-12 xl:gap-16">
       {/* Site Map + Legal Sections */}
@@ -98,10 +158,12 @@ const FooterRight = () => {
             "Featured Projects",
             "Testimonials",
           ]}
+          navigateToSection={navigateToSection}
         />
         <FooterSection
           title="Legal"
           links={["Contact Us", "Privacy Policy", "Terms of Service"]}
+          navigateToSection={navigateToSection}
         />
       </div>
 

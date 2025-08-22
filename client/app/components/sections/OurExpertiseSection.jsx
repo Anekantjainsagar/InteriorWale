@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const expertiseData = [
   {
@@ -31,6 +32,8 @@ const expertiseData = [
 ];
 
 const OurExpertiseSection = () => {
+  const history = useRouter();
+
   return (
     <section className="w-full bg-[#f3f3f3] py-16 lg:py-24">
       <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,7 +86,12 @@ const OurExpertiseSection = () => {
           </div>
 
           {/* See Our Work CTA */}
-          <div className="bg-white rounded-sm shadow-md border-t-[6px] border-newOrange px-6 py-10 flex items-center justify-center text-center cursor-pointer hover:bg-newOrange/10 transition">
+          <div
+            onClick={() => {
+              history.push("/portfolio");
+            }}
+            className="bg-white rounded-sm shadow-md border-t-[6px] border-newOrange px-6 py-10 flex items-center justify-center text-center cursor-pointer hover:bg-newOrange/10 transition"
+          >
             <div className="flex items-center gap-2 text-newOrange text-lg font-semibold">
               <span>See our work</span>
               <ArrowRight className="w-5 h-5" />

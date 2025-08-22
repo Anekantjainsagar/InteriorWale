@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const portfolioItems = [
   {
@@ -20,6 +21,8 @@ const portfolioItems = [
 ];
 
 const PortfolioSection = () => {
+  const history = useRouter();
+
   return (
     <section className="bg-white px-4 sm:px-6 md:px-8 lg:px-[5vw] grid gap-y-8 md:gap-y-12 lg:gap-y-[8vh] mb-8 md:mb-12 lg:mb-[8vh]">
       {portfolioItems.map((item) => (
@@ -35,7 +38,12 @@ const PortfolioSection = () => {
             <p className="text-neutral-700 text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide font-light mt-3 md:mt-4 mb-4 md:mb-6 lg:mb-[5vh]">
               {item.description}
             </p>
-            <button className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-black text-sm sm:text-base md:text-lg text-newOrange font-medium rounded-full hover:bg-neutral-800 transition-all w-full sm:w-auto">
+            <button
+              onClick={() => {
+                history.push("/#contact");
+              }}
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 md:py-4 bg-black text-sm sm:text-base md:text-lg text-newOrange font-medium rounded-full hover:bg-neutral-800 transition-all w-full sm:w-auto"
+            >
               Get yours now!
             </button>
           </div>

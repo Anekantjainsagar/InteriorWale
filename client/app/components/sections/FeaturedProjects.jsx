@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const featuredProjects = [
   {
@@ -18,6 +19,8 @@ const featuredProjects = [
 ];
 
 const FeaturedProjectsSection = () => {
+  const history = useRouter();
+
   return (
     <section className="w-full bg-white py-16 lg:py-24">
       <div className="w-[90%] md:w-[70%] mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +72,12 @@ const FeaturedProjectsSection = () => {
           </div>
 
           {/* CTA Block */}
-          <div className="bg-[#ffad65] text-center flex items-center justify-center p-8 hover:bg-[#ff9c45] transition rounded-sm">
+          <div
+            onClick={() => {
+              history.push("/portfolio");
+            }}
+            className="bg-[#ffad65] cursor-pointer text-center flex items-center justify-center p-8 hover:bg-[#ff9c45] transition rounded-sm"
+          >
             <span className="text-black font-semibold text-xl">
               See our work
             </span>

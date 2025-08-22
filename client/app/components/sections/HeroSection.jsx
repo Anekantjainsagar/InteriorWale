@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 
@@ -35,10 +36,21 @@ const HeroSection = () => {
 
           {/* CTA and Badge */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 mt-8 sm:mt-10 lg:mt-12">
-            <button className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-black font-semibold text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full shadow-md hover:shadow-lg w-fit">
+            <button
+              onClick={() => {
+                const formSection = document.getElementById("contact");
+                if (formSection) {
+                  const offsetTop = formSection.offsetTop - 80; // Adjust for header height if needed
+                  window.scrollTo({
+                    top: offsetTop,
+                    behavior: "smooth",
+                  });
+                }
+              }}
+              className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-black font-semibold text-sm sm:text-base lg:text-lg px-6 sm:px-8 lg:px-10 py-3 sm:py-4 rounded-full shadow-md hover:shadow-lg w-fit"
+            >
               Get started today
             </button>
-
             {/* Interior Badge Image */}
             <div className="flex-shrink-0">
               <Image
@@ -55,7 +67,7 @@ const HeroSection = () => {
 
         {/* Right Image */}
         <div className="w-full lg:w-[40%] xl:w-[45%] relative order-1 lg:order-2">
-          <div className="relative aspect-square w-full max-h-[70vh] lg:max-h-[70vh] xl:max-h-[80vh]">
+          <div className="relative aspect-square w-full max-h-[70vh] lg:max-h-[70vh] xl:max-h-[70vh]">
             <Image
               src="/images/hero_image.png"
               alt="Interior wale hero image"
