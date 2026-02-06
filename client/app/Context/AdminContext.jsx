@@ -10,15 +10,15 @@ const AdminContext = createContext();
 
 // Configuration for all endpoints
 const API_ENDPOINTS = {
-  gallery: "/api/v1/admin/gallery/all",
-  contact: "/api/v1/admin/contact/all",
-  subscribers: "/api/v1/subscribe",
-  queries: "/api/v1/contact",
-  blogs: "/api/v1/admin/blogs/all",
-  maps: "/api/v1/admin/map-charger/all",
-  support: "/api/v1/admin/support-logo/all",
-  productCategories: "/api/v1/admin/products/categories/all",
-  product: "/api/v1/admin/products/all",
+  // gallery: "/api/v1/admin/gallery/all",
+  // contact: "/api/v1/admin/contact/all",
+  // subscribers: "/api/v1/subscribe",
+  // queries: "/api/v1/contact",
+  // blogs: "/api/v1/admin/blogs/all",
+  // maps: "/api/v1/admin/map-charger/all",
+  // support: "/api/v1/admin/support-logo/all",
+  // productCategories: "/api/v1/admin/products/categories/all",
+  // product: "/api/v1/admin/products/all",
 };
 
 export const AdminProvider = ({ children }) => {

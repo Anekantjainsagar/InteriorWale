@@ -10,23 +10,16 @@ const Navbar = () => {
 
   return (
     pathname != "/admin/login" && (
-      <div className="flex items-center justify-between px-5 bg-[#141423] py-3 border-b">
+      <div className="flex items-center justify-between px-5 bg-[#fff] py-3 border-b">
         <Link href="/" target="_blank">
           <div className="bg-gray-200 p-2 rounded-full cursor-pointer">
             <BiWorld size={20} />
           </div>
         </Link>
         <div className="flex items-center">
-          <Image
-            src={"/logo-text.svg"}
-            width={1000}
-            height={1000}
-            alt="Logo"
-            className="w-[7vw] mr-4"
-          />
-          <div className="flex flex-col items-start">
-            <p className="text-newBlue font-bold">Efuel</p>
-            <p className="mt-0 text-gray-50">Admin</p>
+          <div className="flex flex-col items-end">
+            <p className="text-newBlue font-bold">Interior Wale</p>
+            <p className="mt-0 text-gray-800">Admin</p>
           </div>
         </div>
       </div>

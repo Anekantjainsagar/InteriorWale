@@ -87,13 +87,13 @@ const Sidebar = () => {
 
   return (
     pathname != "/admin/login" && (
-      <div className="w-[15vw] h-[100vh] bg-[#141423] flex flex-col items-center px-2 py-6">
+      <div className="w-[15vw] h-[100vh] bg-[#fff] flex flex-col items-center px-2 py-6">
         <Image
-          src={"/logo-text.svg"}
+          src={"/images/img_header_logo.png"}
           width={10000}
           height={1000}
           alt={"Logo"}
-          className="w-6/12"
+          className="w-9/12"
         />
         <div className="w-full mt-6">
           {data?.map((e, i) => {
