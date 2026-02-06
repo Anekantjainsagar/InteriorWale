@@ -1,6 +1,4 @@
 import "./globals.css";
-import Header from "./components/common/Header";
-import Footer from "./components/common/Footer";
 
 export const viewport = {
   width: "device-width",
@@ -18,11 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
