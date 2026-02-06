@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import API_URI from "../../utils/urls";
+import BASE_URI from "../../utils/urls";
 import toast from "react-hot-toast";
 import { getCookie } from "../../utils/cookies";
 import { createContext, useEffect, useState } from "react";
@@ -39,7 +39,7 @@ export const AdminProvider = ({ children }) => {
     const token = getCookie("token");
     if (token) {
       try {
-        const res = await axios.get(`${API_URI}${endpoint}`, {
+        const res = await axios.get(`${BASE_URI}${endpoint}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

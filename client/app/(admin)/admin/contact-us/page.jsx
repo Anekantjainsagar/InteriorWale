@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import API_URI from "../../../../utils/urls";
+import BASE_URI from "../../../../utils/urls";
 import { getCookie } from "../../../../utils/cookies";
 import toast from "react-hot-toast";
 import AdminContext from "../../../Context/AdminContext";
@@ -146,7 +146,7 @@ const ContactUs = () => {
 
   const removePhoneNumber = (index) => {
     const newPhoneNumbers = formData.contactDetails.phoneNumbers.filter(
-      (_, i) => i !== index
+      (_, i) => i !== index,
     );
     setFormData((prev) => ({
       ...prev,
@@ -168,7 +168,7 @@ const ContactUs = () => {
       if (type === "contact") {
         // Filter out empty phone numbers and ensure at least one is provided
         const validPhoneNumbers = formData.contactDetails.phoneNumbers.filter(
-          (num) => num.trim() !== ""
+          (num) => num.trim() !== "",
         );
 
         if (validPhoneNumbers.length === 0) {
@@ -196,8 +196,8 @@ const ContactUs = () => {
 
       const existingItem = contact?.find((item) => item.type === type);
       const endpoint = existingItem
-        ? `${API_URI}/api/v1/admin/contact/update/${existingItem._id}`
-        : `${API_URI}/api/v1/admin/contact/add`;
+        ? `${BASE_URI}/api/v1/admin/contact/update/${existingItem._id}`
+        : `${BASE_URI}/api/v1/admin/contact/add`;
 
       const method = existingItem ? "put" : "post";
 
@@ -218,7 +218,7 @@ const ContactUs = () => {
               } updated successfully`
             : `${
                 type.charAt(0).toUpperCase() + type.slice(1)
-              } created successfully`
+              } created successfully`,
         );
         refreshContact();
       }
@@ -377,8 +377,8 @@ const ContactUs = () => {
             {isLoading
               ? "Processing..."
               : contact?.some((item) => item.type === type)
-              ? `Update ${type.charAt(0).toUpperCase() + type.slice(1)} Office`
-              : `Create ${type.charAt(0).toUpperCase() + type.slice(1)} Office`}
+                ? `Update ${type.charAt(0).toUpperCase() + type.slice(1)} Office`
+                : `Create ${type.charAt(0).toUpperCase() + type.slice(1)} Office`}
           </button>
         </div>
       </form>
@@ -475,8 +475,8 @@ const ContactUs = () => {
             {isLoading
               ? "Processing..."
               : contact?.some((item) => item.type === "contact")
-              ? "Update Contact Details"
-              : "Create Contact Details"}
+                ? "Update Contact Details"
+                : "Create Contact Details"}
           </button>
         </div>
       </form>

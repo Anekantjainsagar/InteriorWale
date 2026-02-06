@@ -20,6 +20,7 @@ const AdminLogin = () => {
     setLoading(true);
     try {
       const res = await login(email, password);
+      console.log(res);
       if (res.success) {
         toast.success("Login Successfully");
         router.push("/admin");

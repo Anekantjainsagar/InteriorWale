@@ -5,8 +5,9 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
-const https = require('https');
-const fs = require('fs');
+const http = require("http");
+const https = require("https");
+const fs = require("fs");
 
 // Import routes
 const routes = require("./routes/routes");
@@ -33,7 +34,7 @@ app.use(
   cors({
     origin: "*",
     credentials: true,
-  })
+  }),
 );
 
 // Development logging
@@ -42,10 +43,10 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // HTTPS Configuration
-const sslOptions = {
-  key: fs.readFileSync('/etc/letsencrypt/live/efuelindia.com/privkey.pem'),  // e.g., /etc/letsencrypt/live/api.yourdomain.com/privkey.pem
-  cert: fs.readFileSync('/etc/letsencrypt/live/efuelindia.com/fullchain.pem') // e.g., /etc/letsencrypt/live/api.yourdomain.com/fullchain.pem
-};
+// const sslOptions = {
+//   key: fs.readFileSync('/etc/letsencrypt/live/efuelindia.com/privkey.pem'),  // e.g., /etc/letsencrypt/live/api.yourdomain.com/privkey.pem
+//   cert: fs.readFileSync('/etc/letsencrypt/live/efuelindia.com/fullchain.pem') // e.g., /etc/letsencrypt/live/api.yourdomain.com/fullchain.pem
+// };
 
 // Body parser
 app.use(express.json({ limit: "50mb" }));
@@ -55,12 +56,12 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(cookieParser());
 
 // Redirect HTTP to HTTPS
-app.use((req, res, next) => {
-  if (!req.secure && req.get('X-Forwarded-Proto') !== 'https' && process.env.NODE_ENV === 'production') {
-    return res.redirect(`https://${req.headers.host}${req.url}`);
-  }
-  next();
-});
+// app.use((req, res, next) => {
+//   if (!req.secure && req.get('X-Forwarded-Proto') !== 'https' && process.env.NODE_ENV === 'production') {
+//     return res.redirect(`https://${req.headers.host}${req.url}`);
+//   }
+//   next();
+// });
 
 // 3. ROUTES
 app.use("/api/v1", routes);
@@ -83,10 +84,12 @@ app.use(errorHandler);
 const port = process.env.PORT || 5000;
 
 // Create HTTPS server
-const server = https.createServer(sslOptions, app).listen(port, () => {
+// const server = https.createServer(sslOptions, app).listen(port, () => {
+//   console.log(`HTTPS Server running on port ${port}`);
+// });
+const server = http.createServer(app).listen(port, () => {
   console.log(`HTTPS Server running on port ${port}`);
 });
-
 
 // Handle unhandled promise rejections
 process.on("unhandledRejection", (err) => {

@@ -19,7 +19,9 @@ const registerUser = async (userData) => {
 
 const loginUser = async (email, password) => {
   // Check if user exists
-  const user = await User.findOne({ email }).select("+password");
+  const user = await User.findOne({ email: email.toLowerCase() }).select(
+    "+password",
+  );
   if (!user) {
     throw new Error("Invalid credentials");
   }
@@ -32,7 +34,6 @@ const loginUser = async (email, password) => {
 
   // Generate token
   const token = generateToken(user._id, user.role);
-
   return { user, token };
 };
 

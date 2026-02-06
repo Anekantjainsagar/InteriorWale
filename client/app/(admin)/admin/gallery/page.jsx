@@ -2,7 +2,7 @@
 import axios from "axios";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import API_URI from "../../../../utils/urls";
+import BASE_URI from "../../../../utils/urls";
 import { getCookie } from "../../../../utils/cookies";
 import AdminContext from "../../../Context/AdminContext";
 import useS3Upload from "../../Components/Utils/S3Uploader";
@@ -41,8 +41,8 @@ const Gallery = () => {
 
     try {
       const endpoint = itemId
-        ? `${API_URI}/api/v1/admin/gallery/update/${itemId}`
-        : `${API_URI}/api/v1/admin/gallery/add`;
+        ? `${BASE_URI}/api/v1/admin/gallery/update/${itemId}`
+        : `${BASE_URI}/api/v1/admin/gallery/add`;
 
       const method = itemId ? "PUT" : "POST";
 
@@ -57,7 +57,7 @@ const Gallery = () => {
 
       if (response.data.success) {
         toast.success(
-          itemId ? "Image updated successfully" : "Image uploaded successfully"
+          itemId ? "Image updated successfully" : "Image uploaded successfully",
         );
         await refreshGallery();
         return true;
@@ -77,10 +77,10 @@ const Gallery = () => {
 
     try {
       const response = await axios.delete(
-        `${API_URI}/api/v1/admin/gallery/delete/${itemId}`,
+        `${BASE_URI}/api/v1/admin/gallery/delete/${itemId}`,
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       );
 
       if (response.data.success) {

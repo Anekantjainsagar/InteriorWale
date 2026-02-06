@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React, { useContext, useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit, AiOutlineEye } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
-import API_URI, { ACTUAL_URI } from "../../../../utils/urls";
+import BASE_URI, { ACTUAL_URI } from "../../../../utils/urls";
 import axios from "axios";
 import Link from "next/link";
 import Select from "../../Components/Utils/Select";
@@ -101,12 +101,12 @@ const BlogItem = ({ data }) => {
       async () => {
         try {
           const response = await axios.delete(
-            `${API_URI}/api/v1/admin/blogs/delete/${data?._id}`,
+            `${BASE_URI}/api/v1/admin/blogs/delete/${data?._id}`,
             {
               headers: {
                 Authorization: `Bearer ${getCookie("token")}`,
               },
-            }
+            },
           );
 
           if (response.status === 200) {
@@ -116,7 +116,7 @@ const BlogItem = ({ data }) => {
         } catch (error) {
           toast.error("Failed to delete blog");
         }
-      }
+      },
     );
   };
 

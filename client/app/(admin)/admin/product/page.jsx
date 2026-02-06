@@ -2,7 +2,7 @@
 import React, { useContext, useState, useRef } from "react";
 import AdminContext from "../../../Context/AdminContext";
 import axios from "axios";
-import API_URI from "../../../../utils/urls";
+import BASE_URI from "../../../../utils/urls";
 import { getCookie } from "../../../../utils/cookies";
 import toast from "react-hot-toast";
 import Image from "next/image";
@@ -96,8 +96,8 @@ const ProductsPage = () => {
     try {
       const token = getCookie("token");
       const endpoint = editingProduct
-        ? `${API_URI}/api/v1/admin/products/update/${editingProduct._id}`
-        : `${API_URI}/api/v1/admin/products/add`;
+        ? `${BASE_URI}/api/v1/admin/products/update/${editingProduct._id}`
+        : `${BASE_URI}/api/v1/admin/products/add`;
 
       const method = editingProduct ? "put" : "post";
 
@@ -109,7 +109,7 @@ const ProductsPage = () => {
         toast.success(
           editingProduct
             ? "Product updated successfully"
-            : "Product added successfully"
+            : "Product added successfully",
         );
         refreshProducts();
         resetForm();
@@ -128,8 +128,8 @@ const ProductsPage = () => {
         try {
           const token = getCookie("token");
           const response = await axios.delete(
-            `${API_URI}/api/v1/admin/products/delete/${productId}`,
-            { headers: { Authorization: `Bearer ${token}` } }
+            `${BASE_URI}/api/v1/admin/products/delete/${productId}`,
+            { headers: { Authorization: `Bearer ${token}` } },
           );
 
           if (response.data.success) {
@@ -138,10 +138,10 @@ const ProductsPage = () => {
           }
         } catch (error) {
           toast.error(
-            error.response?.data?.error || "Failed to delete product"
+            error.response?.data?.error || "Failed to delete product",
           );
         }
-      }
+      },
     );
   };
 
@@ -344,8 +344,8 @@ const ProductsPage = () => {
                   ? "Updating..."
                   : "Adding..."
                 : editingProduct
-                ? "Update"
-                : "Add"}
+                  ? "Update"
+                  : "Add"}
             </button>
             {editingProduct && (
               <button

@@ -1,8 +1,8 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { setCookie, getCookie, deleteCookie } from "@/app/utils/cookies";
+import { setCookie, getCookie, deleteCookie } from "../utils/cookies";
 import axios from "axios";
-import API_URI from "@/app/utils/urls";
+import BASE_URI from "../utils/urls";
 
 const AuthContext = createContext();
 
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
-      const res = await axios.get(`${API_URI}/api/v1/auth/me`, {
+      const res = await axios.get(`${BASE_URI}/api/v1/auth/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error(
         "Auth Check Failed:",
-        err.response?.data?.message || err.message
+        err.response?.data?.message || err.message,
       );
       logout(); // If token is invalid
     } finally {
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`${API_URI}/api/v1/auth/login`, {
+      const res = await axios.post(`${BASE_URI}/api/v1/auth/login`, {
         email,
         password,
       });

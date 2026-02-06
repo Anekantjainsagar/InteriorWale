@@ -1,8 +1,8 @@
-'use client'
+"use client";
 import React, { useContext, useState, useRef } from "react";
-import AdminContext from '../../../../Context/AdminContext';
+import AdminContext from "../../../../Context/AdminContext";
 import axios from "axios";
-import API_URI from "../../../../../utils/urls";
+import BASE_URI from "../../../../../utils/urls";
 import { getCookie } from "../../../../../utils/cookies";
 import toast from "react-hot-toast";
 import Image from "next/image";
@@ -10,7 +10,8 @@ import { useConfirm } from "@/app/(admin)/Components/Utils/ConfirmProvier";
 import useS3Upload from "@/app/(admin)/Components/Utils/S3Uploader";
 
 const ProductCategoriesPage = () => {
-  const { productsCategory, refreshProductsCategory } = useContext(AdminContext);
+  const { productsCategory, refreshProductsCategory } =
+    useContext(AdminContext);
   const { requestConfirm } = useConfirm();
   const { uploadToS3 } = useS3Upload();
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const ProductCategoriesPage = () => {
   const [formData, setFormData] = useState({
     title: "",
     desc: "",
-    image: ""
+    image: "",
   });
 
   const fileInputRef = useRef(null);
@@ -32,8 +33,8 @@ const ProductCategoriesPage = () => {
     try {
       const image_url = await uploadToS3(file);
       if (!image_url) throw new Error("Failed to upload image");
-      
-      setFormData(prev => ({ ...prev, image: image_url }));
+
+      setFormData((prev) => ({ ...prev, image: image_url }));
       toast.success("Image uploaded successfully!");
     } catch (error) {
       console.error("Image upload error:", error);
@@ -45,7 +46,7 @@ const ProductCategoriesPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!formData.title || !formData.desc || !formData.image) {
       toast.error("Please fill all fields and upload an image");
       return;
@@ -54,23 +55,21 @@ const ProductCategoriesPage = () => {
     setLoading(true);
     try {
       const token = getCookie("token");
-      const endpoint = editingCategory 
-        ? `${API_URI}/api/v1/admin/products/categories/update/${editingCategory._id}`
-        : `${API_URI}/api/v1/admin/products/categories/add`;
+      const endpoint = editingCategory
+        ? `${BASE_URI}/api/v1/admin/products/categories/update/${editingCategory._id}`
+        : `${BASE_URI}/api/v1/admin/products/categories/add`;
 
       const method = editingCategory ? "put" : "post";
 
-      const response = await axios[method](
-        endpoint,
-        formData,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await axios[method](endpoint, formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
 
       if (response.data.success) {
         toast.success(
-          editingCategory 
-            ? "Category updated successfully" 
-            : "Category added successfully"
+          editingCategory
+            ? "Category updated successfully"
+            : "Category added successfully",
         );
         refreshProductsCategory();
         resetForm();
@@ -83,22 +82,27 @@ const ProductCategoriesPage = () => {
   };
 
   const handleDelete = (categoryId) => {
-    requestConfirm("Are you sure you want to delete this category?", async () => {
-      try {
-        const token = getCookie("token");
-        const response = await axios.delete(
-          `${API_URI}/api/v1/admin/products/categories/delete/${categoryId}`,
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
+    requestConfirm(
+      "Are you sure you want to delete this category?",
+      async () => {
+        try {
+          const token = getCookie("token");
+          const response = await axios.delete(
+            `${BASE_URI}/api/v1/admin/products/categories/delete/${categoryId}`,
+            { headers: { Authorization: `Bearer ${token}` } },
+          );
 
-        if (response.data.success) {
-          toast.success("Category deleted successfully");
-          refreshProductsCategory();
+          if (response.data.success) {
+            toast.success("Category deleted successfully");
+            refreshProductsCategory();
+          }
+        } catch (error) {
+          toast.error(
+            error.response?.data?.error || "Failed to delete category",
+          );
         }
-      } catch (error) {
-        toast.error(error.response?.data?.error || "Failed to delete category");
-      }
-    });
+      },
+    );
   };
 
   const handleEdit = (category) => {
@@ -106,7 +110,7 @@ const ProductCategoriesPage = () => {
     setFormData({
       title: category.title,
       desc: category.desc,
-      image: category.image
+      image: category.image,
     });
   };
 
@@ -114,7 +118,7 @@ const ProductCategoriesPage = () => {
     setFormData({
       title: "",
       desc: "",
-      image: ""
+      image: "",
     });
     setEditingCategory(null);
     if (fileInputRef.current) {
@@ -221,8 +225,8 @@ const ProductCategoriesPage = () => {
                   ? "Updating..."
                   : "Adding..."
                 : editingCategory
-                ? "Update"
-                : "Add"}
+                  ? "Update"
+                  : "Add"}
             </button>
             {editingCategory && (
               <button
