@@ -1,12 +1,16 @@
+"use client";
+
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
+import AdminContext from "../../../../Context/AdminContext";
 
 const Numbers = () => {
+  const { products } = useContext(AdminContext);
+  const totalWork = products?.length || 0;
+
   return (
     <div className="px-4 sm:px-8 lg:px-[5vw] mb-16 sm:mb-24 lg:mb-[10vh]">
-      {/* Mobile Layout */}
       <div className="block lg:hidden space-y-12">
-        {/* First section - mobile */}
         <div className="flex text-center space-y-6">
           <Image
             src="/images/portfolio/specialized.png"
@@ -27,12 +31,10 @@ const Numbers = () => {
           </div>
         </div>
 
-        {/* Divider - mobile */}
         <div className="w-full h-[1px] bg-black"></div>
 
-        {/* Second section - mobile */}
         <div className="text-center">
-          <h3 className="text-5xl sm:text-6xl font-bold text-black">12</h3>
+          <h3 className="text-5xl sm:text-6xl font-bold text-black">{totalWork}</h3>
           <p className="text-xl sm:text-2xl font-light text-black mt-3">
             Total
             <br /> Work
@@ -40,9 +42,7 @@ const Numbers = () => {
         </div>
       </div>
 
-      {/* Desktop Layout */}
       <div className="hidden lg:flex items-stretch">
-        {/* First row */}
         <div className="flex items-end">
           <Image
             src="/images/portfolio/specialized.png"
@@ -66,7 +66,7 @@ const Numbers = () => {
         <div className="w-[1px] bg-black h-[42vh] xl:h-[52vh]"></div>
 
         <div className="mx-8 xl:mx-14 flex flex-col justify-end">
-          <h3 className="text-6xl xl:text-8xl font-bold text-black">12</h3>
+          <h3 className="text-6xl xl:text-8xl font-bold text-black">{totalWork}</h3>
           <p className="text-2xl xl:text-[40px] font-light text-black mt-3 xl:mt-5">
             Total
             <br /> Work

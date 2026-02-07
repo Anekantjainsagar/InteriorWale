@@ -1,7 +1,7 @@
 const Product = require("../../models/Product");
 
 const getAllProducts = async () => {
-  return await Product.find().populate('category');
+  return await Product.find();
 };
 
 const addProduct = async (data) => {

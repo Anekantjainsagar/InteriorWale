@@ -3,14 +3,8 @@ const mongoose = require("mongoose");
 const productSchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
-    category: { 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: "ProductCategory",
-      required: true 
-    },
     desc: { type: String, required: true },
     image: { type: String, required: true },
-    brochure: { type: Array, required: true },
   },
   { timestamps: true }
 );

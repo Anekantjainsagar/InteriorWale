@@ -38,16 +38,7 @@ const Sidebar = () => {
     {
       name: "Products",
       icon: <AiFillProduct size={20} className="mr-2 pb-0.5" />,
-      sub: [
-        {
-          name: "Products",
-          route: "/admin/product",
-        },
-        {
-          name: "Product Categories",
-          route: "/admin/product/categories",
-        },
-      ],
+      route: "/admin/product",
     },
     {
       name: "Queries",
