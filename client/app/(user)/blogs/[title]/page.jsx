@@ -62,7 +62,7 @@ const BlogPage = () => {
         </nav>
 
         {/* Blog Header */}
-        <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
+        <div className="max-w-5xl mx-auto text-center mb-8 md:mb-12">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6 leading-tight">
             {blog.title}
           </h1>
@@ -82,9 +82,9 @@ const BlogPage = () => {
 
       {/* Blog Content */}
       <div className="px-4 sm:px-6 lg:px-14 pb-12">
-        <div className="max-w-4xl mx-auto">
-          <article className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-black prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-newOrange prose-a:font-medium hover:prose-a:underline prose-strong:text-black prose-strong:font-semibold prose-ul:list-disc prose-ul:ml-6 prose-ul:text-gray-700 prose-ol:list-decimal prose-ol:ml-6 prose-ol:text-gray-700 prose-li:mb-2 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-blockquote:border-l-4 prose-blockquote:border-newOrange prose-blockquote:pl-4 prose-blockquote:italic prose-img:rounded-xl prose-img:shadow-lg">
-            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
+        <div className="max-w-5xl mx-auto">
+          <article className="prose prose-sm sm:prose-base md:prose-lg lg:prose-xl max-w-none break-words overflow-wrap-anywhere prose-headings:font-bold prose-headings:text-black prose-h1:text-2xl sm:prose-h1:text-3xl md:prose-h1:text-4xl prose-h2:text-xl sm:prose-h2:text-2xl md:prose-h2:text-3xl prose-h3:text-lg sm:prose-h3:text-xl md:prose-h3:text-2xl prose-h4:text-base sm:prose-h4:text-lg md:prose-h4:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-newOrange prose-a:font-medium prose-a:break-words hover:prose-a:underline prose-strong:text-black prose-strong:font-semibold prose-ul:list-disc prose-ul:ml-6 prose-ul:text-gray-700 prose-ol:list-decimal prose-ol:ml-6 prose-ol:text-gray-700 prose-li:mb-2 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:break-all prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-blockquote:border-l-4 prose-blockquote:border-newOrange prose-blockquote:pl-4 prose-blockquote:italic prose-img:rounded-xl prose-img:shadow-lg prose-img:max-w-full [&_*]:break-words [&_*]:overflow-wrap-anywhere">
+            <div className="break-words" dangerouslySetInnerHTML={{ __html: blog.content }} />
           </article>
         </div>
       </div>
