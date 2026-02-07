@@ -8,9 +8,6 @@ export const viewport = {
 export const metadata = {
   title: "InteriorWale",
   description: "Interior design and decoration services",
-  icons: {
-    icon: [{ url: "/favicon.ico", type: "image/x-icon" }],
-  },
 };
 
 export default function RootLayout({ children }) {
