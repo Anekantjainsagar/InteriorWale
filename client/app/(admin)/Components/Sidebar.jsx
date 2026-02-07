@@ -1,19 +1,15 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useAuth } from "../../Context/AuthContext";
-import { RiDashboardLine } from "react-icons/ri";
-import { CiLogout, CiUser } from "react-icons/ci";
-import { usePathname, useRouter } from "next/navigation";
-import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
-import { FaBlogger, FaCircleNotch, FaUsers } from "react-icons/fa";
+import { CiLogout } from "react-icons/ci";
 import { GrGallery } from "react-icons/gr";
-import { MdOutlineContactPhone } from "react-icons/md";
 import { FaQuestion } from "react-icons/fa";
-import { MdMarkEmailUnread } from "react-icons/md";
-import { CiMapPin } from "react-icons/ci";
-import { BiSupport } from "react-icons/bi";
 import { AiFillProduct } from "react-icons/ai";
+import { RiDashboardLine } from "react-icons/ri";
+import { useAuth } from "../../Context/AuthContext";
+import { usePathname, useRouter } from "next/navigation";
+import { FaBlogger, FaCircleNotch } from "react-icons/fa";
+import { AiOutlineDown, AiOutlineRight } from "react-icons/ai";
 
 const Sidebar = () => {
   const { logout } = useAuth();
@@ -59,29 +55,9 @@ const Sidebar = () => {
       route: "/admin/gallery",
     },
     {
-      name: "Map Coordinates",
-      icon: <CiMapPin size={20} className="mr-2 pb-0.5" />,
-      route: "/admin/map-coords",
-    },
-    {
-      name: "Support Logos",
-      icon: <BiSupport size={20} className="mr-2 pb-0.5" />,
-      route: "/admin/support-logos",
-    },
-    {
-      name: "Subscribers",
-      icon: <MdMarkEmailUnread size={20} className="mr-2 pb-0.5" />,
-      route: "/admin/subscribers",
-    },
-    {
       name: "Queries",
       icon: <FaQuestion size={20} className="mr-2 pb-0.5" />,
       route: "/admin/queries",
-    },
-    {
-      name: "Additional Details",
-      icon: <MdOutlineContactPhone size={20} className="mr-2 pb-0.5" />,
-      route: "/admin/contact-us",
     },
   ];
 
@@ -132,7 +108,9 @@ const NavItem = ({ e }) => {
           setShowBottom(!showBottom);
         }}
         className={`font-medium transition-all py-2 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
-          pathname == e?.route ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:bg-gray-100"
+          pathname == e?.route
+            ? "text-blue-600 bg-blue-50"
+            : "text-gray-700 hover:bg-gray-100"
         }`}
       >
         <div className="items-center flex">
@@ -171,7 +149,9 @@ const SubNavItem = ({ data }) => {
         }
       }}
       className={`font-medium transition-all py-2 rounded-lg px-4 mb-0.5 cursor-pointer flex justify-between items-center pl-8 ${
-        pathname == data?.route ? "text-blue-600 bg-blue-50" : "text-gray-600 hover:bg-gray-100"
+        pathname == data?.route
+          ? "text-blue-600 bg-blue-50"
+          : "text-gray-600 hover:bg-gray-100"
       }`}
     >
       <div className="items-center flex">

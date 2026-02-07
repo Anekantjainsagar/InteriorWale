@@ -1,149 +1,40 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import AdminContext from "../../../Context/AdminContext";
 
-const BlogPage = ({ blogData }) => {
-  // Sample blog data - you would pass this as props or fetch from API
-  const defaultBlogData = {
-    title: "Luxurious Interior And Industrial Design",
-    description:
-      "A limited edition of work by the interior wale makes us the only one in pune to provide such good services.",
-    image: "/images/blogs/home.png",
-    content: [
-      {
-        type: "paragraph",
-        text: "In the world of interior design, the fusion of luxury and industrial elements creates spaces that are both sophisticated and raw, elegant yet edgy. This unique approach to design has revolutionized how we perceive modern living spaces, bringing together the best of both worlds to create environments that are truly extraordinary.",
-      },
-      {
-        type: "heading",
-        text: "The Art of Luxury Meets Industrial",
-      },
-      {
-        type: "paragraph",
-        text: "Luxury interior design traditionally emphasizes comfort, elegance, and high-end materials. When combined with industrial design elements – exposed brick, steel beams, concrete surfaces, and vintage machinery – the result is a space that tells a story of both refinement and authenticity.",
-      },
-      {
-        type: "image",
-        src: "/images/blogs/1.png",
-        alt: "Luxury Industrial Interior Example",
-        caption:
-          "A perfect blend of luxury finishes with industrial structural elements",
-      },
-      {
-        type: "paragraph",
-        text: "Our approach to this design style focuses on creating harmony between contrasting elements. Soft leather furniture against rough concrete walls, crystal chandeliers suspended from exposed steel beams, and marble countertops paired with industrial pipe fixtures create visual interest and depth.",
-      },
-      {
-        type: "heading",
-        text: "Key Elements of Luxurious Industrial Design",
-      },
-      {
-        type: "list",
-        items: [
-          "Exposed structural elements (beams, pipes, brick walls)",
-          "High-end materials (marble, leather, premium woods)",
-          "Statement lighting fixtures",
-          "Neutral color palettes with metallic accents",
-          "Vintage or reclaimed furniture pieces",
-          "Large windows and open floor plans",
-        ],
-      },
-      {
-        type: "paragraph",
-        text: "The beauty of this design philosophy lies in its flexibility. Whether you're working with a converted warehouse loft or a modern apartment, industrial luxury can be adapted to suit any space. The key is finding the right balance between raw and refined elements.",
-      },
-      {
-        type: "heading",
-        text: "Why Choose Interior Wale?",
-      },
-      {
-        type: "paragraph",
-        text: "As Pune's premier interior design firm specializing in luxury industrial spaces, we bring years of expertise and a unique vision to every project. Our team understands how to blend these contrasting styles seamlessly, creating spaces that are both functional and breathtakingly beautiful.",
-      },
-      {
-        type: "paragraph",
-        text: "From concept to completion, we work closely with our clients to ensure their vision comes to life. Our attention to detail, commitment to quality, and innovative design solutions set us apart in the industry.",
-      },
-    ],
-    author: "Interior Wale Team",
-    publishedDate: "March 15, 2024",
-    readTime: "8 min read",
-    tags: ["Interior Design", "Luxury", "Industrial", "Pune", "Home Decor"],
-    relatedBlogs: [
-      {
-        title:
-          "Brand strategy to create stunning interior to attract more customers",
-        image: "/images/blogs/1.png",
-        slug: "brand-strategy-stunning-interior",
-      },
-      {
-        title: "Modern Minimalism: Less is More in Interior Design",
-        image: "/images/blogs/2.png",
-        slug: "modern-minimalism-interior-design",
-      },
-    ],
+const BlogPage = () => {
+  const params = useParams();
+  const { blogs } = useContext(AdminContext);
+  
+  const stripHtml = (html) => {
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
   };
 
-  const blog = blogData || defaultBlogData;
-
-  const renderContent = (contentItem, index) => {
-    switch (contentItem.type) {
-      case "paragraph":
-        return (
-          <p
-            key={index}
-            className="text-gray-700 text-base sm:text-lg md:text-xl leading-relaxed mb-6 md:mb-8"
-          >
-            {contentItem.text}
-          </p>
-        );
-
-      case "heading":
-        return (
-          <h2
-            key={index}
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-4 md:mb-6 mt-8 md:mt-12"
-          >
-            {contentItem.text}
-          </h2>
-        );
-
-      case "image":
-        return (
-          <div key={index} className="my-8 md:my-12">
-            <Image
-              src={contentItem.src}
-              alt={contentItem.alt}
-              width={1000}
-              height={600}
-              className="w-full h-auto rounded-2xl md:rounded-3xl"
-            />
-            {contentItem.caption && (
-              <p className="text-sm md:text-base text-gray-500 text-center mt-3 italic">
-                {contentItem.caption}
-              </p>
-            )}
-          </div>
-        );
-
-      case "list":
-        return (
-          <ul
-            key={index}
-            className="list-disc list-inside space-y-2 md:space-y-3 mb-6 md:mb-8 text-gray-700 text-base sm:text-lg md:text-xl"
-          >
-            {contentItem.items.map((item, itemIndex) => (
-              <li key={itemIndex} className="leading-relaxed">
-                {item}
-              </li>
-            ))}
-          </ul>
-        );
-
-      default:
-        return null;
-    }
+  const truncateText = (html, maxLength) => {
+    const text = stripHtml(html);
+    return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
   };
+
+  const truncateTitle = (title, maxLength) => {
+    return title?.length > maxLength ? title.slice(0, maxLength) + "..." : title;
+  };
+  
+  const blog = blogs?.find(
+    (b) => b.title?.toLowerCase()?.replaceAll(" ", "-") === decodeURIComponent(params.title)
+  );
+
+  if (!blog) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl">Blog not found</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -176,48 +67,10 @@ const BlogPage = ({ blogData }) => {
             {blog.title}
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 md:mb-8 leading-relaxed">
-            {blog.description}
-          </p>
-
-          {/* Blog Meta Info */}
-          <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 text-sm md:text-base text-gray-500 mb-8 md:mb-12">
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              By {blog.author}
-            </span>
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              {blog.publishedDate}
-            </span>
-            <span className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              {blog.readTime}
-            </span>
-          </div>
-
           {/* Featured Image */}
           <div className="mb-8 md:mb-12">
             <Image
-              src={blog.image}
+              src={blog.coverImage}
               alt={blog.title}
               width={1200}
               height={700}
@@ -228,30 +81,11 @@ const BlogPage = ({ blogData }) => {
       </div>
 
       {/* Blog Content */}
-      <div className="px-4 sm:px-6 lg:px-14">
+      <div className="px-4 sm:px-6 lg:px-14 pb-12">
         <div className="max-w-4xl mx-auto">
-          <article className="prose prose-lg md:prose-xl max-w-none">
-            {blog.content.map((contentItem, index) =>
-              renderContent(contentItem, index)
-            )}
+          <article className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:text-black prose-h1:text-4xl prose-h2:text-3xl prose-h3:text-2xl prose-h4:text-xl prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4 prose-a:text-newOrange prose-a:font-medium hover:prose-a:underline prose-strong:text-black prose-strong:font-semibold prose-ul:list-disc prose-ul:ml-6 prose-ul:text-gray-700 prose-ol:list-decimal prose-ol:ml-6 prose-ol:text-gray-700 prose-li:mb-2 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-blockquote:border-l-4 prose-blockquote:border-newOrange prose-blockquote:pl-4 prose-blockquote:italic prose-img:rounded-xl prose-img:shadow-lg">
+            <div dangerouslySetInnerHTML={{ __html: blog.content }} />
           </article>
-
-          {/* Tags */}
-          <div className="mt-12 md:mt-16 pt-8 border-t border-gray-200">
-            <h3 className="text-lg md:text-xl font-semibold text-black mb-4">
-              Tags:
-            </h3>
-            <div className="flex flex-wrap gap-2 md:gap-3">
-              {blog.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="bg-gray-100 text-gray-700 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-sm md:text-base hover:bg-newOrange hover:text-black transition-colors cursor-pointer"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
 
@@ -263,15 +97,15 @@ const BlogPage = ({ blogData }) => {
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            {blog.relatedBlogs.map((relatedBlog, index) => (
+            {blogs?.slice(0, 2).map((relatedBlog, index) => (
               <Link
                 key={index}
-                href={`/blogs/${relatedBlog.slug}`}
+                href={`/blogs/${relatedBlog.title?.toLowerCase()?.replaceAll(" ", "-")}`}
                 className="group bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
               >
                 <div className="aspect-video overflow-hidden">
                   <Image
-                    src={relatedBlog.image}
+                    src={relatedBlog.coverImage}
                     alt={relatedBlog.title}
                     width={600}
                     height={400}
@@ -280,8 +114,11 @@ const BlogPage = ({ blogData }) => {
                 </div>
                 <div className="p-5 md:p-6">
                   <h4 className="text-lg md:text-xl font-bold text-black group-hover:text-newOrange transition-colors line-clamp-2">
-                    {relatedBlog.title}
+                    {truncateTitle(relatedBlog.title, 50)}
                   </h4>
+                  <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                    {truncateText(relatedBlog.content, 190)}
+                  </p>
                   <div className="mt-4 flex justify-end">
                     <span className="bg-newOrange text-black px-4 md:px-6 py-2 text-sm md:text-base rounded-full group-hover:bg-opacity-90 transition-colors">
                       Read More

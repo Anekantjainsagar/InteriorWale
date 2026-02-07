@@ -6,8 +6,8 @@ import BASE_URI from "../../../../utils/urls";
 import { getCookie } from "../../../../utils/cookies";
 import toast from "react-hot-toast";
 import Image from "next/image";
-import { useConfirm } from "@/app/(admin)/Components/Utils/ConfirmProvier";
-import useS3Upload from "../../../Components/Utils/S3Uploader";
+import { useConfirm } from "../../Components/Utils/ConfirmProvier";
+import useS3Upload from "../../Components/Utils/S3Uploader";
 
 const ProductsPage = () => {
   const { productsCategory, products, refreshProducts } =

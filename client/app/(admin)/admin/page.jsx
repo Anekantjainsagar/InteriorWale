@@ -30,12 +30,6 @@ const DashboardPage = () => {
 
   const stats = [
     {
-      title: "Contacts",
-      value: contact?.length || 0,
-      icon: <FiMail className="text-blue-500 text-2xl" />,
-      link: "/admin/contact-us",
-    },
-    {
       title: "Queries",
       value: queries?.length || 0,
       icon: <FiMail className="text-green-500 text-2xl" />,
@@ -48,28 +42,10 @@ const DashboardPage = () => {
       link: "/admin/subscribers",
     },
     {
-      title: "Gallery Images",
-      value: gallery?.length || 0,
-      icon: <FiImage className="text-yellow-500 text-2xl" />,
-      link: "/admin/gallery",
-    },
-    {
       title: "Blogs",
       value: blogs?.length || 0,
       icon: <BsNewspaper className="text-red-500 text-2xl" />,
       link: "/admin/blogs",
-    },
-    {
-      title: "Map Data",
-      value: maps?.length || 0,
-      icon: <FiMap className="text-indigo-500 text-2xl" />,
-      link: "/admin/map-coords",
-    },
-    {
-      title: "Support Logos",
-      value: supportLogos?.length || 0,
-      icon: <MdSupport className="text-pink-500 text-2xl" />,
-      link: "/admin/support-logos",
     },
     {
       title: "Product Categories",
