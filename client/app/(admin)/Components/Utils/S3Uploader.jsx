@@ -1,5 +1,4 @@
 import { useState } from "react";
-import AWS from "aws-sdk";
 
 const useS3Upload = () => {
   const [uploading, setUploading] = useState(false);
@@ -9,28 +8,26 @@ const useS3Upload = () => {
     setUploading(true);
     setError(null);
 
-    // Configure AWS
-    AWS.config.update({
-      accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY,
-      secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_KEY,
-      region: "ap-south-1",
-    });
-
-    const s3 = new AWS.S3({
-      params: { Bucket: "efuel-img" },
-      region: "ap-south-1",
-    });
-
-    const params = {
-      Bucket: "efuel-img",
-      Key: `photos/${Date.now()}_${file.name}`,
-      Body: file,
-      ContentType: file.type,
-    };
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "interior");
+    formData.append("folder", "photos");
 
     try {
-      const data = await s3.upload(params).promise();
-      return data.Location;
+      const response = await fetch(
+        `https://api.cloudinary.com/v1_1/dyu0t5ec6/image/upload`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const data = await response.json();
+      return data.secure_url;
     } catch (err) {
       setError(err.message);
       return null;

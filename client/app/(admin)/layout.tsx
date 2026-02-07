@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-full h-full flex items-start overflow-y-hidden">
+    <div className="w-full h-full flex items-start overflow-y-hidden bg-gray-50">
       <AuthProvider>
         <AdminProvider>
           <ConfirmProvider>

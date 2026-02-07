@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Editor } from "@tinymce/tinymce-react";
 import AdminContext from "../../../../Context/AdminContext";
 import { getCookie } from "../../../../../utils/cookies";
-import useS3Upload from "@/app/(admin)/Components/Utils/S3Uploader";
+import useS3Upload from "../../../Components/Utils/S3Uploader";
 
 const EditBlog = ({ params }) => {
   const { id } = params;
@@ -36,7 +36,7 @@ const EditBlog = ({ params }) => {
           const currentBlog = blogs.find(
             (blog) =>
               blog?.title?.toLowerCase()?.replace(/\s+/g, "-") ===
-              decodedId.toLowerCase()
+              decodedId.toLowerCase(),
           );
 
           if (currentBlog) {
@@ -53,7 +53,7 @@ const EditBlog = ({ params }) => {
 
         // Fallback: Fetch the blog directly if not found in context
         const response = await axios.get(
-          `${BASE_URI}/api/v1/admin/blogs/${id}`
+          `${BASE_URI}/api/v1/admin/blogs/${id}`,
         );
         if (response.data) {
           setBlogData({
@@ -121,7 +121,7 @@ const EditBlog = ({ params }) => {
           headers: {
             Authorization: `Bearer ${getCookie("token")}`,
           },
-        }
+        },
       );
 
       if (response.status === 200) {
@@ -241,7 +241,7 @@ const EditBlog = ({ params }) => {
         className={`w-full py-1.5 rounded-md mt-4 ${
           isSubmitting || imageUploading
             ? "bg-blue-300 cursor-not-allowed"
-            : "bg-newBlue text-white hover:bg-blue-700"
+            : "bg-[#000] text-white hover:bg-blue-700"
         }`}
         disabled={isSubmitting || imageUploading}
       >

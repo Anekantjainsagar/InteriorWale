@@ -10,15 +10,15 @@ const AdminContext = createContext();
 
 // Configuration for all endpoints
 const API_ENDPOINTS = {
-  // gallery: "/api/v1/admin/gallery/all",
-  // contact: "/api/v1/admin/contact/all",
-  // subscribers: "/api/v1/subscribe",
-  // queries: "/api/v1/contact",
-  // blogs: "/api/v1/admin/blogs/all",
-  // maps: "/api/v1/admin/map-charger/all",
-  // support: "/api/v1/admin/support-logo/all",
-  // productCategories: "/api/v1/admin/products/categories/all",
-  // product: "/api/v1/admin/products/all",
+  gallery: "/api/v1/admin/gallery/all",
+  contact: "/api/v1/admin/contact/all",
+  subscribers: "/api/v1/subscribe",
+  queries: "/api/v1/contact",
+  blogs: "/api/v1/admin/blogs/all",
+  maps: "/api/v1/admin/map-charger/all",
+  support: "/api/v1/admin/support-logo/all",
+  productCategories: "/api/v1/admin/products/categories/all",
+  product: "/api/v1/admin/products/all",
 };
 
 export const AdminProvider = ({ children }) => {
@@ -73,15 +73,15 @@ export const AdminProvider = ({ children }) => {
 
       try {
         const results = await Promise.allSettled([
-          fetchData(API_ENDPOINTS.maps, setMaps),
+          // fetchData(API_ENDPOINTS.maps, setMaps),
           fetchData(API_ENDPOINTS.blogs, setBlogs),
-          fetchData(API_ENDPOINTS.gallery, setGallery),
-          fetchData(API_ENDPOINTS.queries, setQueries),
-          fetchData(API_ENDPOINTS.contact, setContact),
-          fetchData(API_ENDPOINTS.support, setSupportLogos),
-          fetchData(API_ENDPOINTS.subscribers, setSubscribers),
-          fetchData(API_ENDPOINTS.product, setProducts),
-          fetchData(API_ENDPOINTS.productCategories, setProductsCategory),
+          // fetchData(API_ENDPOINTS.gallery, setGallery),
+          // fetchData(API_ENDPOINTS.queries, setQueries),
+          // fetchData(API_ENDPOINTS.contact, setContact),
+          // fetchData(API_ENDPOINTS.support, setSupportLogos),
+          // fetchData(API_ENDPOINTS.subscribers, setSubscribers),
+          // fetchData(API_ENDPOINTS.product, setProducts),
+          // fetchData(API_ENDPOINTS.productCategories, setProductsCategory),
         ]);
         results.forEach((result) => {
           if (result.status === "rejected") {

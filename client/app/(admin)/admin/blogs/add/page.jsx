@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { Editor } from "@tinymce/tinymce-react";
 import { getCookie } from "../../../../../utils/cookies";
 import AdminContext from "../../../../Context/AdminContext";
-import useS3Upload from "@/app/(admin)/Components/Utils/S3Uploader";
+import useS3Upload from "../../../Components/Utils/S3Uploader";
 
 const AddBlog = () => {
   const router = useRouter();
@@ -64,7 +64,7 @@ const AddBlog = () => {
           headers: {
             Authorization: `Bearer ${getCookie("token")}`,
           },
-        }
+        },
       );
 
       if (response.status === 201) {
@@ -161,7 +161,7 @@ const AddBlog = () => {
           className={`w-full py-1.5 rounded-md text-white ${
             isSubmitting || uploadingImage
               ? "bg-blue-300 cursor-not-allowed"
-              : "bg-newBlue hover:bg-blue-700 transition-colors"
+              : "bg-[#000] hover:bg-blue-700 transition-colors"
           }`}
         >
           {isSubmitting ? "Saving Blog..." : "Save Blog"}

@@ -87,7 +87,7 @@ const Sidebar = () => {
 
   return (
     pathname != "/admin/login" && (
-      <div className="w-[15vw] h-[100vh] bg-[#fff] flex flex-col items-center px-2 py-6">
+      <div className="w-[15vw] h-[100vh] bg-white border-r flex flex-col items-center px-2 py-6">
         <Image
           src={"/images/img_header_logo.png"}
           width={10000}
@@ -104,9 +104,7 @@ const Sidebar = () => {
               logout();
               history.push("/");
             }}
-            className={`font-medium hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
-              pathname == "/logout" ? "text-white bg-gray-700" : "text-gray-400"
-            }`}
+            className="font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-all py-2 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center"
           >
             <div className="items-center flex">
               <CiLogout size={20} className="mr-2 pb-0.5" />
@@ -133,8 +131,8 @@ const NavItem = ({ e }) => {
           }
           setShowBottom(!showBottom);
         }}
-        className={`font-medium hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
-          pathname == e?.route ? "text-white bg-gray-700" : "text-gray-400"
+        className={`font-medium transition-all py-2 rounded-lg px-2 mb-0.5 cursor-pointer flex justify-between items-center ${
+          pathname == e?.route ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:bg-gray-100"
         }`}
       >
         <div className="items-center flex">
@@ -172,8 +170,8 @@ const SubNavItem = ({ data }) => {
           history.push(data?.route);
         }
       }}
-      className={`text-gray-400 font-bold hover:text-white transition-all py-2 hover:bg-gray-700 rounded-lg px-4 mb-0.5 cursor-pointer flex justify-between items-center pl-8 ${
-        pathname == data?.route ? "text-white bg-gray-700" : "text-gray-400"
+      className={`font-medium transition-all py-2 rounded-lg px-4 mb-0.5 cursor-pointer flex justify-between items-center pl-8 ${
+        pathname == data?.route ? "text-blue-600 bg-blue-50" : "text-gray-600 hover:bg-gray-100"
       }`}
     >
       <div className="items-center flex">
