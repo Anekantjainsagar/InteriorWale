@@ -30,7 +30,7 @@ const BlogCards = () => {
         <div className="px-0 md:px-[5vw] mb-10 md:mb-16">
           <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-10">
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold lg:w-8/12">
-              {blogs[0].title}
+              {truncateText(blogs[0].title, 30)}
             </h1>
             <div className="lg:w-4/12">
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-light mb-4">
@@ -76,7 +76,7 @@ const BlogCards = () => {
             </div>
             <div className="w-full sm:w-[60%] md:w-[70%] lg:w-[77%] sm:pl-0 md:pl-5 lg:pl-9">
               <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 md:mb-3">
-                {blog.title}
+                {truncateText(blog.title, 100)}
               </h2>
               <p className="text-sm sm:text-base md:text-lg lg:text-xl mt-2 line-clamp-3 md:line-clamp-4">
                 {truncateText(blog.content, 190)}
