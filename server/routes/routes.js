@@ -4,10 +4,9 @@ const contactController = require("../controllers/contactController");
 const subscribeController = require("../controllers/subscribeController");
 const { protect } = require("../middlewares/authMiddleware");
 
-
 router
   .route("/contact")
-  .post(contactController.submitContactForm) // Create/Submit
+  .post(contactController.submitContactForm) // Create
   .get(protect, contactController.getAllContactForms); // Fetch all
 
 router

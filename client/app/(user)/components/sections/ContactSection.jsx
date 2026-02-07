@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Button from "../ui/Button";
 import EditText from "../ui/EditText";
 import TextArea from "../ui/TextArea";
+import BASE_URI from "../../../utils/urls";
 
 // Submission Popup Component
 const SubmissionPopup = ({ isOpen, onClose, isSuccess, message }) => {
@@ -101,6 +102,8 @@ const ContactSection = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleInputChange = (field) => (e) => {
     setFormData((prev) => ({
       ...prev,
@@ -117,7 +120,7 @@ const ContactSection = () => {
     ];
 
     const emptyFields = requiredFields.filter(
-      ({ field }) => !formData[field].trim()
+      ({ field }) => !formData[field].trim(),
     );
 
     if (emptyFields.length > 0) {
@@ -153,49 +156,65 @@ const ContactSection = () => {
     };
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const validation = validateForm();
 
-    if (validation.isValid) {
-      console.log("Form submitted:", formData);
-
-      // Show success popup
-      setPopup({
-        isOpen: true,
-        isSuccess: true,
-        message: validation.message,
-      });
-
-      // Reset form on successful submission
-      setFormData({
-        name: "",
-        phone: "",
-        email: "",
-        requirement: "",
-        message: "",
-      });
-
-      // Here you would typically make an API call to submit the form
-      // Example:
-      // try {
-      //   await submitContactForm(formData);
-      //   // Success handling above
-      // } catch (error) {
-      //   setPopup({
-      //     isOpen: true,
-      //     isSuccess: false,
-      //     message: "Something went wrong. Please try again later.",
-      //   });
-      // }
-    } else {
-      // Show error popup
+    if (!validation.isValid) {
       setPopup({
         isOpen: true,
         isSuccess: false,
         message: validation.message,
       });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch(`${BASE_URI}/api/v1/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setPopup({
+          isOpen: true,
+          isSuccess: true,
+          message:
+            "Your message has been submitted successfully! We'll get back to you soon.",
+        });
+
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          requirement: "",
+          message: "",
+        });
+      } else {
+        setPopup({
+          isOpen: true,
+          isSuccess: false,
+          message:
+            data.message || "Something went wrong. Please try again later.",
+        });
+      }
+    } catch (error) {
+      setPopup({
+        isOpen: true,
+        isSuccess: false,
+        message:
+          "Unable to submit form. Please check your connection and try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -281,9 +300,10 @@ const ContactSection = () => {
             <div className="text-center mt-6 sm:mt-8 lg:mt-10">
               <button
                 type="submit"
-                className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-black font-semibold text-sm sm:text-base lg:text-lg px-8 sm:px-12 lg:px-16 xl:px-20 py-2.5 sm:py-3 lg:py-3.5 rounded-full shadow-md hover:shadow-lg w-full sm:w-auto max-w-xs"
+                disabled={isSubmitting}
+                className="bg-newOrange hover:bg-opacity-90 transition-all duration-200 text-black font-semibold text-sm sm:text-base lg:text-lg px-8 sm:px-12 lg:px-16 xl:px-20 py-2.5 sm:py-3 lg:py-3.5 rounded-full shadow-md hover:shadow-lg w-full sm:w-auto max-w-xs disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit
+                {isSubmitting ? "Submitting..." : "Submit"}
               </button>
             </div>
           </form>

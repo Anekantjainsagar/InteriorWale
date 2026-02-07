@@ -50,11 +50,6 @@ const Sidebar = () => {
       ],
     },
     {
-      name: "Gallery",
-      icon: <GrGallery size={20} className="mr-2 pb-0.5" />,
-      route: "/admin/gallery",
-    },
-    {
       name: "Queries",
       icon: <FaQuestion size={20} className="mr-2 pb-0.5" />,
       route: "/admin/queries",

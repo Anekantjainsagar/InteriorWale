@@ -8,14 +8,13 @@ const isAdmin = (user) => user.role === "admin";
 // @access  Public
 exports.submitContactForm = async (req, res) => {
   try {
-    const { name, email, phone, enquiryType, city, message } = req.body;
+    const { name, phone, email, requirement, message } = req.body;
 
     const contact = await Contact.create({
       name,
-      email,
       phone,
-      enquiryType,
-      city,
+      email,
+      requirement,
       message,
     });
 

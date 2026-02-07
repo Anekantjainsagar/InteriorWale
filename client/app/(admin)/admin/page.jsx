@@ -1,32 +1,12 @@
 "use client";
 import Link from "next/link";
+import { FiMail } from "react-icons/fi";
 import React, { useContext } from "react";
-import { MdSupport } from "react-icons/md";
 import AdminContext from "../../Context/AdminContext";
 import { BsNewspaper, BsBoxSeam } from "react-icons/bs";
-import {
-  FiUsers,
-  FiMail,
-  FiImage,
-  FiMap,
-  FiFileText,
-  FiLayers,
-  FiGlobe,
-} from "react-icons/fi";
 
 const DashboardPage = () => {
-  const {
-    loading,
-    gallery,
-    contact,
-    queries,
-    subscribers,
-    blogs,
-    maps,
-    supportLogos,
-    products,
-    productsCategory,
-  } = useContext(AdminContext);
+  const { loading, queries, blogs, products } = useContext(AdminContext);
 
   const stats = [
     {
@@ -36,22 +16,10 @@ const DashboardPage = () => {
       link: "/admin/queries",
     },
     {
-      title: "Subscribers",
-      value: subscribers?.length || 0,
-      icon: <FiUsers className="text-purple-500 text-2xl" />,
-      link: "/admin/subscribers",
-    },
-    {
       title: "Blogs",
       value: blogs?.length || 0,
       icon: <BsNewspaper className="text-red-500 text-2xl" />,
       link: "/admin/blogs",
-    },
-    {
-      title: "Product Categories",
-      value: productsCategory?.length || 0,
-      icon: <FiLayers className="text-teal-500 text-2xl" />,
-      link: "/admin/product/categories",
     },
     {
       title: "Products",

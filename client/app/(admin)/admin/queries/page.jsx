@@ -12,22 +12,11 @@ const Queries = () => {
         query.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         query.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
         query.phone.includes(searchTerm) ||
-        query.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        query.message.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        query.enquiryType.toLowerCase().includes(searchTerm.toLowerCase())
+        query.requirement.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (query.message && query.message.toLowerCase().includes(searchTerm.toLowerCase()))
     );
 
-    const getEnquiryColor = (type) => {
-        switch(type) {
-            case 'general': return 'bg-blue-100 text-blue-800';
-            case 'product': return 'bg-green-100 text-green-800';
-            case 'support': return 'bg-purple-100 text-purple-800';
-            case 'complaint': return 'bg-red-100 text-red-800';
-            default: return 'bg-gray-100 text-gray-800';
-        }
-    };
-
-    const formatDate = (dateString) => {
+const formatDate = (dateString) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-IN', {
             day: 'numeric',
@@ -68,10 +57,7 @@ const Queries = () => {
                                     Contact
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Enquiry Type
-                                </th>
-                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                    Location
+                                    Requirement
                                 </th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Message
@@ -104,21 +90,14 @@ const Queries = () => {
                                                 </Link>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getEnquiryColor(query.enquiryType)}`}>
-                                                {query.enquiryType.charAt(0).toUpperCase() + query.enquiryType.slice(1)}
-                                            </span>
-                                        </td>
-                                        <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="flex items-center text-gray-500">
-                                                <FiMapPin className="mr-1" /> {query.city}
-                                            </div>
+                                        <td className="px-6 py-4">
+                                            <div className="text-gray-900">{query.requirement}</div>
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center text-gray-500 max-w-xs truncate">
                                                 <FiInfo className="mr-1 flex-shrink-0" /> 
-                                                <span className="truncate" title={query.message}>
-                                                    {query.message}
+                                                <span className="truncate" title={query.message || 'No message'}>
+                                                    {query.message || '-'}
                                                 </span>
                                             </div>
                                         </td>
@@ -131,7 +110,7 @@ const Queries = () => {
                                 ))
                             ) : (
                                 <tr>
-                                    <td colSpan="6" className="px-6 py-4 text-center text-gray-500">
+                                    <td colSpan="5" className="px-6 py-4 text-center text-gray-500">
                                         {searchTerm ? 'No matching queries found' : 'No queries available'}
                                     </td>
                                 </tr>

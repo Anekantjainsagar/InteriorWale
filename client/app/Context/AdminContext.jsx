@@ -76,7 +76,7 @@ export const AdminProvider = ({ children }) => {
           // fetchData(API_ENDPOINTS.maps, setMaps),
           fetchData(API_ENDPOINTS.blogs, setBlogs),
           // fetchData(API_ENDPOINTS.gallery, setGallery),
-          // fetchData(API_ENDPOINTS.queries, setQueries),
+          fetchData(API_ENDPOINTS.queries, setQueries),
           // fetchData(API_ENDPOINTS.contact, setContact),
           // fetchData(API_ENDPOINTS.support, setSupportLogos),
           // fetchData(API_ENDPOINTS.subscribers, setSubscribers),
