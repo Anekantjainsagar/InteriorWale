@@ -41,7 +41,7 @@ const TestimonialsSection = () => {
           </h2>
           <p className="text-base lg:text-lg text-gray-800 font-light max-w-3xl mx-auto">
             We take pride in creating spaces that truly reflect the
-            personalities and lifestyles of our clients. Here's what they have
+            personalities and lifestyles of our clients. Here&apos;s what they have
             to say about working with Interior Wale:
           </p>
         </div>
