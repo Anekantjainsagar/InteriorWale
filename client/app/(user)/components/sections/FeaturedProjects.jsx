@@ -32,10 +32,10 @@ const FeaturedProjectsSection = () => {
           <p className="text-xl lg:text-2xl text-gray-800">
             Crafted spaces, tailored to you
           </p>
-          <p className="text-base lg:text-lg font-light text-gray-500 mt-2 w-11/12 md:w-6/12 mx-auto">
+          {/* <p className="text-base lg:text-lg font-light text-gray-500 mt-2 w-11/12 md:w-6/12 mx-auto">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor
-          </p>
+          </p> */}
         </div>
 
         {/* Grid Layout */}

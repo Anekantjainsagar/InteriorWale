@@ -43,13 +43,14 @@ const AboutSection = () => {
                 Crafting Interiors with Purpose & Passion
               </h3>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                At Interior Wale, we believe every space tells a story. Our
+                mission is to design interiors that reflect your personality,
+                lifestyle, and aspirations.
               </p>
               <p className="text-base sm:text-lg text-gray-300 leading-relaxed mt-4">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque
-                ipsa.
+                With a passion for detail and a commitment to timeless design,
+                we transform houses into homes and offices into inspiring
+                workplaces.
               </p>
             </div>
 

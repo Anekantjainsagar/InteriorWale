@@ -6,25 +6,29 @@ const testimonials = [
   {
     name: "Aman Kaushik",
     message:
-      "The interior wale has crafted the most amazing & aesthetic space at home. I would recommend them for any type of interior designing.",
-    image: "/images/aman.png", // Replace with actual path
-    rating: 4,
+      "The Interior Wale has crafted the most amazing and aesthetic space at home. Their attention to detail and ability to blend functionality with beauty is unmatched. I would recommend them for any type of interior designing.",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6yytxc15LLLTdRd0VoTe1YgsxMY0Qx3ESNw&s",
+    rating: 5,
   },
   {
-    name: "Aman Kaushik",
+    name: "Riya Sharma",
     message:
-      "The interior wale has crafted the most amazing & aesthetic space at home. I would recommend them for any type of interior designing.",
-    image: "/images/aman.png",
-    rating: 4,
+      "Working with Interior Wale was a seamless experience. They understood my vision perfectly and transformed my apartment into a modern yet cozy haven. Every corner feels personalized and thoughtfully designed.",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlUkjGYJ6drjQzplDtXZyJ3-wB5e1La7wcgg&s",
+    rating: 5,
   },
   {
-    name: "Aman Kaushik",
+    name: "Arjun Mehta",
     message:
-      "The interior wale has crafted the most amazing & aesthetic space at home. I would recommend them for any type of interior designing.",
-    image: "/images/aman.png",
-    rating: 4,
+      "From concept to execution, Interior Wale delivered beyond expectations. The team was professional, creative, and attentive to every detail. My office space now feels inspiring and productive thanks to their design expertise.",
+    image:
+      "https://t4.ftcdn.net/jpg/03/80/58/23/360_F_380582318_5lJ52eVLcePphpM4pMHdew3wgopfhQSc.jpg",
+    rating: 5,
   },
 ];
+
 
 const TestimonialsSection = () => {
   return (
@@ -33,11 +37,12 @@ const TestimonialsSection = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-1">
-            Our Testimonials
+            What Our Clients Say
           </h2>
-          <p className="text-base lg:text-lg text-gray-800 font-light max-w-xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor
+          <p className="text-base lg:text-lg text-gray-800 font-light max-w-3xl mx-auto">
+            We take pride in creating spaces that truly reflect the
+            personalities and lifestyles of our clients. Here's what they have
+            to say about working with Interior Wale:
           </p>
         </div>
 
@@ -48,13 +53,14 @@ const TestimonialsSection = () => {
               key={index}
               className="bg-white p-8 rounded-md text-center shadow-sm hover:shadow-md transition"
             >
-              <div className="w-32 h-32 mx-auto mb-4">
+              <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}
-                  width={1200}
-                  height={1200}
-                  className="rounded-full object-cover"
+                  width={128}
+                  height={128}
+                  className="w-full h-full object-cover object-top scale-125"
+                  unoptimized
                 />
               </div>
               {/* Rating */}
@@ -76,7 +82,7 @@ const TestimonialsSection = () => {
               </div>
               {/* Name and Message */}
               <h4 className="font-semibold text-2xl mb-2">{testimonial.name}</h4>
-              <p className="text-gray-800 w-11/12 font-light">{testimonial.message}</p>
+              <p className="text-gray-800 font-light">{testimonial.message}</p>
             </div>
           ))}
         </div>

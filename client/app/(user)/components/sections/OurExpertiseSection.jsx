@@ -9,25 +9,25 @@ const expertiseData = [
     icon: "/images/icons/commercial 1.png",
     title: "Commercial Spaces",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Functional yet stylish interiors for offices, retail, and hospitality.",
   },
   {
     icon: "/images/icons/resident 1.png",
     title: "Residential Interiors",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Personalized designs that make your home truly yours.",
   },
   {
     icon: "/images/icons/sofa 1.png",
     title: "Luxury Decorations & Living Spaces",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Elegant décor elements that elevate everyday living.",
   },
   {
     icon: "/images/icons/kitchen 1.png",
     title: "Kitchen & Bath Transformations",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Modern, practical, and beautiful upgrades for essential spaces.",
   },
 ];
 
@@ -45,10 +45,7 @@ const OurExpertiseSection = () => {
           <p className="text-xl lg:text-2xl text-gray-800">
             Crafted spaces, tailored to you
           </p>
-          <p className="text-base lg:text-lg text-gray-800 font-light mt-2 w-6/12 mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor
-          </p>
+
         </div>
 
         {/* Grid Content */}

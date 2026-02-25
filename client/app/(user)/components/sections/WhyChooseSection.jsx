@@ -4,28 +4,28 @@ import Image from "next/image";
 
 const features = [
   {
-    icon: "/images/icon_feature.svg", // Replace with actual orange icon
-    title: "Tailored to your lifestyle",
+    icon: "/images/icon_feature.svg",
+    title: "Tailored to Your Lifestyle",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Every design is customized to suit your needs and preferences.",
   },
   {
     icon: "/images/icon_feature.svg",
-    title: "Hassle free process",
+    title: "Hassle-Free Process",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "We handle everything from planning to execution, so you can enjoy the transformation stress-free.",
   },
   {
     icon: "/images/icon_feature.svg",
-    title: "Timeless",
+    title: "Timeless Designs",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "Our interiors are built to remain stylish and relevant for years to come.",
   },
   {
     icon: "/images/icon_feature.svg",
-    title: "Sustainable",
+    title: "Sustainable Approach",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor",
+      "We incorporate eco-friendly materials and practices to create responsible designs.",
   },
 ];
 
@@ -57,10 +57,7 @@ const WhyChooseSection = () => {
           <p className="text-xl lg:text-2xl text-gray-900 mt-2">
             Crafted spaces, tailored to you
           </p>
-          <p className="text-base lg:text-lg text-gray-800 mt-2 font-light mx-auto w-11/12 md:w-6/12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor
-          </p>
+
         </div>
 
         {/* Images + Features */}

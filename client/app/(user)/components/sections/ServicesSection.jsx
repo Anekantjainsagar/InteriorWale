@@ -8,21 +8,21 @@ const ServicesSection = () => {
       id: 1,
       title: "Luxury Home Styling",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ",
+        "From elegant living rooms to cozy bedrooms, we curate luxurious spaces that balance comfort and sophistication.",
       image: "/images/img_rectangle_10.png",
     },
     {
       id: 2,
       title: "Modern Office Design",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ",
+        "We design contemporary workspaces that boost productivity while maintaining a sleek, professional aesthetic.",
       image: "/images/img_rectangle_10_220x514.png",
     },
     {
       id: 3,
       title: "Complete Home Renovation",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium ",
+        "From concept to completion, we manage full-scale renovations to breathe new life into your home.",
       image: "/images/img_rectangle_10_1.png",
     },
   ];
@@ -36,11 +36,11 @@ const ServicesSection = () => {
             What We Do
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-black mb-2 sm:mb-3">
-            Crafted spaces, tailored to you
+            Crafted Spaces, Tailored to You
           </p>
           <p className="text-sm xs:text-base sm:text-lg text-gray-800 max-w-2xl font-light mx-auto px-4 sm:px-0">
             We specialize in creating unique, personalized interior solutions
-            that reflect your style and enhance your daily life.
+            that enhance your daily life.
           </p>
         </div>
 
